@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nemyx's Mods - All mods</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        /* Variables CSS pour les couleurs */
+        :root {
+            --background-color: #1a1a2e; /* Sombre pour un look moderne */
+            --text-color: #e0e0e0;
+            --primary-gradient-start: #6a0572; /* Dégradé violet/bleu comme l'exemple */
+            --primary-gradient-end: #8a2be2;
+            --card-background: #20203f;
+            --border-color: #3f3f6f;
+            --link-color: #bb86fc; /* Une couleur vive pour les liens */
+            --shadow-color: rgba(0, 0, 0, 0.4);
+            --secondary-text-color: #a0a0b0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: var(--card-background);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px var(--shadow-color);
+            flex-grow: 1;
+        }
+
+        /* En-tête */
+        header {
+            background-color: #16162a; /* Plus sombre pour l'en-tête */
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: 0 2px 10px var(--shadow-color);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        .logo {
+            font-size: 2em;
+            font-weight: bold;
+            background: linear-gradient(90deg, var(--primary-gradient-start), var(--primary-gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--link-color);
+        }
+
+        /* Section Héro */
+        .hero-section {
+            text-align: center;
+            padding: 80px 20px;
+            background-color: #1a1a2e;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 40px;
+        }
+
+        .hero-section h1 {
+            font-size: 3.5em;
+            font-weight: 800;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, #34b6ff, #ffae43); /* Un dégradé comme l'exemple */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-section p {
+            font-size: 1.2em;
+            color: var(--secondary-text-color);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Titres de section */
+        h2 {
+            font-size: 2.2em;
+            color: var(--link-color);
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-gradient-start), var(--primary-gradient-end));
+            border-radius: 2px;
+        }
+
+        /* Liste des mods */
+        .mod-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .mod-card {
+            background-color: #27274a; /* Plus clair que l'arrière-plan du container */
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .mod-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .mod-card img {
+            width: 100%;
+            height: 200px; /* Taille fixe pour les images des mods */
+            object-fit: cover;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .mod-card-content {
+            padding: 20px;
+        }
+
+        .mod-card h3 {
+            font-size: 1.6em;
+            color: var(--link-color);
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .mod-card p {
+            font-size: 0.95em;
+            color: var(--secondary-text-color);
+            margin-bottom: 15px;
+        }
+
+        .mod-card .version {
+            font-size: 0.85em;
+            color: #888;
+            margin-bottom: 10px;
+        }
+
+        .mod-card a.button {
+            display: inline-block;
+            background: linear-gradient(90deg, var(--primary-gradient-start), var(--primary-gradient-end));
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .mod-card a.button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.5); /* Ombre colorée au survol */
+        }
+
+        /* Section Instructions */
+        .instructions-section {
+            padding: 40px 20px;
+            background-color: var(--card-background);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px var(--shadow-color);
+            margin-top: 50px;
+        }
+
+        .instructions-section ol {
+            list-style: decimal;
+            padding-left: 25px;
+            color: var(--secondary-text-color);
+            max-width: 800px;
+            margin: 20px auto;
+        }
+
+        .instructions-section ol li {
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+
+        .instructions-section ol li strong {
+            color: var(--text-color);
+        }
+
+        /* Pied de page */
+        footer {
+            background-color: #16162a;
+            color: var(--secondary-text-color);
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 1px solid var(--border-color);
+            margin-top: 50px;
+        }
+
+        footer a {
+            color: var(--link-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#" class="logo">Nemyx's Mods</a>
+            <ul>
+                <li><a href="#mods">Mods</a></li>
+                <li><a href="#installation">Installation</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <h1>Welcome on my mods page!</h1>
+            <p>Explore all my Minecraft mods made for increase the gameplay!</p>
+        </section>
+
+        <div class="container">
+            <section id="mods">
+                <h2>All my mods</h2>
+                <div class="mod-grid">
+                    <div class="mod-card">
+                        <img src="images/mod1_thumbnail.webp" alt="Thumbnail du Mod 1">
+                        <div class="mod-card-content">
+                            <h3>Nemyx's More Food</h3>
+                            <p class="version">Version: 1.0.0 (NeoForge 1.21.5)</p>
+                            <p>A mod that add more food to Minecraft.</p>
+                            <a href="mods/nemyx-core.html" class="button">Download</a>
+                        </div>
+                    </div>
+
+                    <div class="mod-card">
+                        <img src="images/mod2_thumbnail.webp" alt="Thumbnail du Mod 2">
+                        <div class="mod-card-content">
+                            <h3>Aura & Echo</h3>
+                            <p class="version">Version: 2.1.0 (Forge/Fabric 1.19.4)</p>
+                            <p>Ajoute de nouveaux effets d'aura personnalisables et des échos mystiques à votre monde Minecraft. Parfait pour les explorateurs !</p>
+                            <a href="mods/aura-echo.html" class="button">Détails & Télécharger</a>
+                        </div>
+                    </div>
+
+                    <div class="mod-card">
+                        <img src="images/mod3_thumbnail.webp" alt="Thumbnail du Mod 3">
+                        <div class="mod-card-content">
+                            <h3>Dungeon Delver's Delights</h3>
+                            <p class="version">Version: 0.9.5 (Forge 1.18.2)</p>
+                            <p>Un mod qui enrichit les donjons avec de nouveaux butins, monstres et défis à surmonter.</p>
+                            <a href="mods/dungeon-delver.html" class="button">Détails & Télécharger</a>
+                        </div>
+                    </div>
+
+                    </div>
+            </section>
+
+            ---
+
+            <section id="installation" class="instructions-section">
+                <h2>Comment installer un mod ?</h2>
+                <p style="text-align: center; color: var(--secondary-text-color); margin-bottom: 30px;">Suivez ces étapes pour installer mes mods et plonger dans une nouvelle aventure Minecraft !</p>
+                <ol>
+                    <li>
+                        <strong>Prérequis :</strong> Assurez-vous d'avoir la version de Minecraft appropriée installée.
+                    </li>
+                    <li>
+                        <strong>Télécharger un Loader :</strong> La plupart de mes mods nécessitent un **loader** (comme Forge ou Fabric) pour fonctionner. Téléchargez et installez la version du loader qui correspond à la version de Minecraft et à celle du mod que vous souhaitez installer.
+                    </li>
+                    <li>
+                        <strong>Obtenir le Mod :</strong> Téléchargez le fichier `.jar` du mod depuis sa page de détails (lien "Détails & Télécharger" ci-dessus).
+                    </li>
+                    <li>
+                        <strong>Placer le Mod :</strong> Rendez-vous dans le dossier de votre installation Minecraft. Sur Windows, c'est généralement `%appdata%\.minecraft`. À l'intérieur, vous trouverez (ou devrez créer) un dossier nommé `mods`. Glissez-y le fichier `.jar` de mon mod.
+                    </li>
+                    <li>
+                        <strong>Lancer le Jeu :</strong> Ouvrez le launcher Minecraft et sélectionnez le profil du loader (Forge ou Fabric) que vous avez installé. Lancez le jeu et profitez de mes mods !
+                    </li>
+                </ol>
+                <p style="text-align: center; color: var(--secondary-text-color); margin-top: 20px;">Pour des instructions détaillées ou en cas de problème, consultez la page spécifique de chaque mod ou la section support.</p>
+            </section>
+        </div>
+    </main>
+
+    <footer id="contact">
+        <p>&copy; 2025 Nemyx's Mods. Tous droits réservés.</p>
+        <p>Une question ou un problème ? Contactez-moi : <a href="mailto:contact@nemyxmods.com">contact@nemyxmods.com</a></p>
+        <p>Suivez mes projets : <a href="https://twitter.com/nemyxmods" target="_blank">Twitter</a> | <a href="https://github.com/nemyxmods" target="_blank">GitHub</a></p>
+    </footer>
+</body>
+</html>
